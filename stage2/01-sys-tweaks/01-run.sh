@@ -40,6 +40,7 @@ if [ "${USE_QEMU}" = "1" ]; then
 	install -m 644 files/90-qemu.rules "${ROOTFS_DIR}/etc/udev/rules.d/"
 	on_chroot << EOF
 systemctl disable resize2fs_once
+systemctl enable serial-getty@serial0.service
 EOF
 	echo "leaving QEMU mode"
 else
